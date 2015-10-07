@@ -17,8 +17,7 @@ var celToKelvin = function(cel){
 	//C + 273.15 
 };
 var kelvinToFaren = function(k){
-	return (((k - 273.15) * 9/5) + 32).toFixed(2);
-	//K - 273.15  
+	return (((k - 273.15) * 9/5) + 32).toFixed(2);	  
 };
 var kelvinToCelsius = function(k){
 	return (k - 273.15); 
@@ -31,14 +30,15 @@ describe('SimpleTemperatureConverter',function(){
 	var farToCelArray = [{n1:100,r:37.78},{n1:32,r:0.00},{n1:0,r:-17.78},];
 	var farToKelArray = [{n1:100,r:-235.37},{n1:32,r:-273.15},{n1:0,r:-290.93},];
 	var celToFarArray = [{n1:100,r:212},{n1:32,r:89.60},{n1:0,r:32},];
-	var celToKelArray = [{n1:100,r:373.78},{n1:-273.15,r:0.00},{n1:0,r:273.15},];
+	var celToKelArray = [{n1:100,r:373.15},{n1:-273.15,r:0.00},{n1:0,r:273.15},];
 
 	
 	farToCelArray.forEach(function(element){
 		var n1 = element.n1;		
 		var res = element.r;
+		var resAround = res.toFixed(2);
 		it('#farToCelsius ('+n1+')='+res,function(){
-		expect(farToCelsius(n1)).to.equal(res);
+		expect(farToCelsius(n1)).to.equal(resAround);
 		});
 	});	
 	
@@ -53,8 +53,9 @@ describe('SimpleTemperatureConverter',function(){
 	celToFarArray.forEach(function(element){
 		var n1 = element.n1;		
 		var res = element.r;
+		var resAround = res.toFixed(2);
 		it('#celToFahr ('+n1+')='+res,function(){
-		expect(celToFahr(n1)).to.equal(res).toFixed(2);
+		expect(celToFahr(n1)).to.equal(resAround);
 		});
 	});	
 
@@ -62,7 +63,7 @@ describe('SimpleTemperatureConverter',function(){
 		var n1 = element.n1;		
 		var res = element.r;
 		it('#celToKelvin ('+n1+')='+res,function(){
-		expect(celToKelvin(n1)).to.equal(res).toFixed(2);
+		expect(celToKelvin(n1)).to.equal(res);
 		});
 	});	
 });
