@@ -5,7 +5,7 @@ var farToCelsius = function(far){
 	//(F - 32) * 5/9 
 };
 var farToKelvin = function(far){
-	return (((far-32)*5)/9)-273.15.toFixed(2);
+	return ((((far-32)*5)/9)-273.15).toFixed(2);
 	//(F - 32) * 5/9 + 273.15 
 };
 var celToFahr = function(cel){
@@ -46,8 +46,9 @@ describe('SimpleTemperatureConverter',function(){
 	farToKelArray.forEach(function(element){
 		var n1 = element.n1;		
 		var res = element.r;
+		var resAround = res.toFixed(2);
 		it('#farToKelvin ('+n1+')='+res,function(){
-		expect(farToKelvin(n1)).to.equal(res);
+		expect(farToKelvin(n1)).to.equal(resAround);
 		});
 	});	
 	celToFarArray.forEach(function(element){
